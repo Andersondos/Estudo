@@ -1,71 +1,78 @@
-🚀 Princípio da Responsabilidade Única (SRP - Single Responsibility Principle)
-Este módulo implementa o Princípio da Responsabilidade Única (SRP - Single Responsibility Principle) dentro do projeto SOLID. Cada classe tem uma única responsabilidade, garantindo código mais modular, testável e fácil de manter.
+# 🏗️ Princípios SOLID - Fundamentos do Design de Software
 
-📂 Estrutura do Módulo SRP
-Copiar
-Editar
-SRP/
-│── Controllers/
-│   └── FaturaController.cs
-│── Models/
-│   ├── Fatura.cs
-│   └── FaturaRequest.cs
-│── Services/
-│   ├── FaturaService.cs
-│   ├── NotificationService.cs
-│   ├── EmailService.cs
-│   └── SmsService.cs
-│── Repositories/
-│   └── FaturaRepository.cs
-│── README.md
-🎯 Objetivo
-Separar responsabilidades dentro do código.
-Melhorar a coesão e manutenibilidade do projeto.
-Demonstrar como aplicar o SRP na prática.
-🛠 Tecnologias Utilizadas
-C#
-ASP.NET Core
-Injeção de Dependência
-🔧 Como Executar
-1️⃣ Certifique-se de estar na pasta SRP/ e execute:
+Os princípios **SOLID** são um conjunto de boas práticas de programação para tornar o código mais **organizado, reutilizável e de fácil manutenção**. Esses princípios foram definidos por **Robert C. Martin (Uncle Bob)** e são amplamente utilizados no desenvolvimento de software orientado a objetos.
 
-sh
-Copiar
-Editar
-dotnet run
-2️⃣ A API estará disponível em:
+## 📜 Os 5 Princípios SOLID
 
-bash
-Copiar
-Editar
-https://localhost:5001/swagger/index.html
-📝 Endpoints
-➤ Criar uma Fatura
-URL: POST /api/fatura/processar
-Body (JSON):
+Cada letra de **SOLID** representa um princípio importante:
 
-json
-Copiar
-Editar
-{
-  "nome": "Cliente 1",
-  "valor": 150.50,
-  "email": "cliente@email.com",
-  "telefone": "11999999999"
+1. **S** - Single Responsibility Principle (**SRP**) - Princípio da Responsabilidade Única ✅
+2. **O** - Open/Closed Principle (**OCP**) - Princípio do Aberto/Fechado ⏳
+3. **L** - Liskov Substitution Principle (**LSP**) - Princípio da Substituição de Liskov ⏳
+4. **I** - Interface Segregation Principle (**ISP**) - Princípio da Segregação de Interfaces ⏳
+5. **D** - Dependency Inversion Principle (**DIP**) - Princípio da Inversão de Dependências ⏳
+
+> **Status:** ✅ Estudamos o **SRP** até agora! Os demais princípios serão estudados em seguida.
+
+---
+
+## 🔍 1. Single Responsibility Principle (**SRP**) ✅
+
+> **"Uma classe deve ter apenas um motivo para mudar."**
+
+Este princípio afirma que uma classe **deve ter apenas uma única responsabilidade**. Ou seja, cada classe deve **fazer apenas uma coisa** e não misturar responsabilidades diferentes.
+
+### 🏗️ Exemplo:
+
+Errado ❌ (Misturando responsabilidades)
+```csharp
+public class RelatorioService {
+    public void GerarRelatorio() { /* Gera um relatório */ }
+    public void SalvarBanco() { /* Salva no banco de dados */ }
+    public void EnviarEmail() { /* Envia por e-mail */ }
 }
-Resposta:
+```
 
-json
-Copiar
-Editar
-{
-  "message": "Fatura processada com sucesso!"
+Certo ✅ (Separando responsabilidades)
+```csharp
+public class RelatorioService {
+    public void GerarRelatorio() { /* Gera um relatório */ }
 }
-📌 Princípios Aplicados
-✅ SRP (Single Responsibility Principle)
-Cada classe tem uma única responsabilidade:
 
-FaturaService: Processa faturas.
-NotificationService: Gerencia notificações.
-FaturaRepository: Salva faturas no banco.
-EmailService e SmsService: Enviam notificações.
+public class RelatorioRepository {
+    public void SalvarBanco() { /* Salva no banco de dados */ }
+}
+
+public class EmailService {
+    public void EnviarEmail() { /* Envia por e-mail */ }
+}
+```
+
+🔹 Agora, cada classe **tem uma única responsabilidade** e **é mais fácil de manter**!
+
+---
+
+## 🚀 Benefícios de Usar SOLID
+
+✔ Código mais **organizado e modular**  
+✔ **Facilidade na manutenção** e expansão do sistema  
+✔ **Reutilização de código** sem impacto negativo  
+✔ **Facilidade para testar** cada parte do sistema  
+✔ **Menos bugs** e problemas de acoplamento   
+
+---
+
+## 📌 Próximos Passos
+
+🚀 **Vamos continuar os estudos com o Open/Closed Principle (OCP)!**  
+
+---
+
+🔗 **Referências:**  
+- [Clean Code - Robert C. Martin](https://www.oreilly.com/library/view/clean-code/9780136083238/)  
+- [The Principles of OOD - Uncle Bob](https://web.archive.org/web/20190225154222/http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)
+
+---
+
+📌 **Autor:** Anderson Douglas de Oliveira Santos 
+🛠 **Tecnologias:** C#, ASP.NET Core  
