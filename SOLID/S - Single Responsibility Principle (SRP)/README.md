@@ -75,7 +75,3 @@ Cada classe tem uma única responsabilidade:
 - `NotificationService`: Gerencia notificações.  
 - `FaturaRepository`: Salva faturas no banco.  
 - `EmailService` e `SmsService`: Enviam notificações.
-
----
-
-Agora é só mover este arquivo para a pasta `SRP/`.
